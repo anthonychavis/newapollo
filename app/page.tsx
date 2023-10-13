@@ -6,6 +6,8 @@ import { Main } from './components/main';
 import { NavBar } from './components/navbar';
 import { UnorderedList } from './components/unorderedlist';
 import styles from './page.module.css';
+import { Card } from './components/card';
+import { H2 } from './components/h2';
 
 export default function Page() {
     return (
@@ -15,7 +17,7 @@ export default function Page() {
                     <UnorderedList>
                         <ListElement>
                             {/* go to home page */}
-                            <Link href={''}>Icon</Link>
+                            <Link href={''}>Logo</Link>
                         </ListElement>
                         <ListElement>
                             <Link href={''}>Home</Link>
@@ -40,7 +42,12 @@ export default function Page() {
                 </NavBar>
             </Header>
             <Main>
-                <H1>BuyCoin Blockchain</H1>
+                <Card>
+                    <H1>BuyCoin Blockchain</H1>
+                </Card>
+                <Card>
+                    <H2>BuyCoin ICO:</H2>
+                </Card>
             </Main>
         </>
     );
