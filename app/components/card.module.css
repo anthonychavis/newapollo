@@ -1,0 +1,6 @@
+.card {
+    background-color: purple;
+    block-size: 30vb;
+    inline-size: clamp(30ch, 30vi, 50ch);
+    margin-inline: clamp(1rem, 5vw, 2rem);
+}
