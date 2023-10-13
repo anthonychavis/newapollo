@@ -1,3 +1,6 @@
+// does this mess w/fetching data from the server ??
+'use client';
+
 import Link from 'next/link';
 import { H1 } from './components/h1';
 import { Header } from './components/header';
@@ -8,8 +11,14 @@ import { UnorderedList } from './components/unorderedlist';
 import styles from './page.module.css';
 import { Card } from './components/card';
 import { H2 } from './components/h2';
+import { ProgressBar } from './components/progressbar';
+import { PTag } from './components/ptag';
+import { Button } from './components/button';
+import { useState } from 'react';
 
 export default function Page() {
+    const [authorized, setAuthorized] = useState(false);
+
     return (
         <>
             <Header>
@@ -17,26 +26,28 @@ export default function Page() {
                     <UnorderedList>
                         <ListElement>
                             {/* go to home page */}
-                            <Link href={''}>Logo</Link>
+                            <Link href={'#'}>Logo</Link>
                         </ListElement>
                         <ListElement>
-                            <Link href={''}>Home</Link>
+                            <Link href={'#'}>Home</Link>
                         </ListElement>
                         <ListElement>
-                            <Link href={''}>Features</Link>
+                            <Link href={'#'}>Features</Link>
                         </ListElement>
                         <ListElement>
-                            <Link href={''}>Safety</Link>
+                            <Link href={'#'}>Safety</Link>
                         </ListElement>
                         <ListElement>
-                            <Link href={''}>Blog</Link>
+                            <Link href={'#'}>Blog</Link>
                         </ListElement>
                         <ListElement>
-                            <Link href={''}>Contacts</Link>
+                            <Link href={'#'}>Contacts</Link>
                         </ListElement>
                         <ListElement>
                             {/* make butoon ?? */}
-                            <Link href={''}>SIGN IN</Link>
+                            <Link href={'#'}>
+                                <Button>SIGN IN</Button>
+                            </Link>
                         </ListElement>
                     </UnorderedList>
                 </NavBar>
@@ -44,9 +55,34 @@ export default function Page() {
             <Main>
                 <Card>
                     <H1>BuyCoin Blockchain</H1>
+                    <PTag>Secure & Easy Way To Trade</PTag>
+                    <Link href={'#'}>
+                        <Button>GET STARTED</Button>
+                    </Link>
+                    <Link href={'#'}>
+                        <Button>WHITEPAPER</Button>
+                    </Link>
                 </Card>
                 <Card>
                     <H2>BuyCoin ICO:</H2>
+                    <PTag>Discount 33% from final price</PTag>
+                    {/* how to do the progress bar & related text for it ?? 🤔 */}
+                    <ProgressBar>progress bar for something</ProgressBar>
+                    <PTag>Fixed token edition 3,000,000 BITS</PTag>
+                    <Link href={'#'}>
+                        <Button>BUY TOKENS</Button>
+                    </Link>
+                    <UnorderedList>
+                        <ListElement>
+                            <Link href={'#'}>logo</Link>
+                        </ListElement>
+                        <ListElement>
+                            <Link href={'#'}>logo</Link>
+                        </ListElement>
+                        <ListElement>
+                            <Link href={'#'}>logo</Link>
+                        </ListElement>
+                    </UnorderedList>
                 </Card>
             </Main>
         </>
