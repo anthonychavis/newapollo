@@ -1,7 +1,8 @@
+import { ReactElement } from 'react';
 import style from './unorderedlist.module.css';
 
 type Props = {
-    children: JSX.Element[];
+    children: ReactElement<Element>[] | JSX.Element;
 };
 
 export const UnorderedList = ({ children }: Props) => (

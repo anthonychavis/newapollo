@@ -16,6 +16,33 @@ import { PTag } from './components/ptag';
 import { Button } from './components/button';
 import { useState } from 'react';
 
+const navListElArr = [
+    { name: 'Logo', href: '#' },
+    { name: 'Home', href: '#' },
+    { name: 'Features', href: '#' },
+    { name: 'Safety', href: '#' },
+    { name: 'Blog', href: '#' },
+    { name: 'Contacts', href: '#' },
+    { name: 'Sign In', href: '#' },
+];
+const secondCardFooterArr = [
+    { name: 'FB', href: '#' },
+    { name: 'LI', href: '#' },
+    { name: 'IG', href: '#' },
+];
+
+interface ListObjNameHref {
+    name: string;
+    href: string;
+}
+
+const listElLoopFxn = (objArr: ListObjNameHref[]) =>
+    objArr.map(({ name, href }) => (
+        <ListElement>
+            <Link href={href}>{name}</Link>
+        </ListElement>
+    ));
+
 export default function Page() {
     const [authorized, setAuthorized] = useState(false);
 
@@ -23,33 +50,7 @@ export default function Page() {
         <>
             <Header>
                 <NavBar>
-                    <UnorderedList>
-                        <ListElement>
-                            {/* go to home page */}
-                            <Link href={'#'}>Logo</Link>
-                        </ListElement>
-                        <ListElement>
-                            <Link href={'#'}>Home</Link>
-                        </ListElement>
-                        <ListElement>
-                            <Link href={'#'}>Features</Link>
-                        </ListElement>
-                        <ListElement>
-                            <Link href={'#'}>Safety</Link>
-                        </ListElement>
-                        <ListElement>
-                            <Link href={'#'}>Blog</Link>
-                        </ListElement>
-                        <ListElement>
-                            <Link href={'#'}>Contacts</Link>
-                        </ListElement>
-                        <ListElement>
-                            {/* make butoon ?? */}
-                            <Link href={'#'}>
-                                <Button>SIGN IN</Button>
-                            </Link>
-                        </ListElement>
-                    </UnorderedList>
+                    <UnorderedList>{listElLoopFxn(navListElArr)}</UnorderedList>
                 </NavBar>
             </Header>
             <Main>
@@ -73,15 +74,7 @@ export default function Page() {
                         <Button>BUY TOKENS</Button>
                     </Link>
                     <UnorderedList>
-                        <ListElement>
-                            <Link href={'#'}>logo</Link>
-                        </ListElement>
-                        <ListElement>
-                            <Link href={'#'}>logo</Link>
-                        </ListElement>
-                        <ListElement>
-                            <Link href={'#'}>logo</Link>
-                        </ListElement>
+                        {listElLoopFxn(secondCardFooterArr)}
                     </UnorderedList>
                 </Card>
             </Main>
