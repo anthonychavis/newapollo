@@ -8,7 +8,6 @@ import { UnorderedList } from './components/unorderedlist';
 import styles from './page.module.css';
 import { Card } from './components/card';
 import { ProgressBar } from './components/progressbar';
-import { PTag } from './components/ptag';
 import { Button } from './components/button';
 import { useState } from 'react';
 import { LargeContainer } from './components/large-container';
@@ -59,7 +58,7 @@ export default function Page() {
             <LargeContainer className={styles.main} type={'main'}>
                 <Card>
                     <TextEl type={'h1'}>BuyCoin Blockchain</TextEl>
-                    <PTag>Secure & Easy Way To Trade</PTag>
+                    <TextEl>Secure & Easy Way To Trade</TextEl>
                     <Link href={'#'}>
                         <Button>GET STARTED</Button>
                     </Link>
@@ -69,10 +68,10 @@ export default function Page() {
                 </Card>
                 <Card>
                     <TextEl type={'h2'}>BuyCoin ICO:</TextEl>
-                    <PTag>Discount 33% from final price</PTag>
+                    <TextEl>Discount 33% from final price</TextEl>
                     {/* how to do the progress bar & related text for it ?? 🤔 */}
                     <ProgressBar>progress bar for something</ProgressBar>
-                    <PTag>Fixed token edition 3,000,000 BITS</PTag>
+                    <TextEl>Fixed token edition 3,000,000 BITS</TextEl>
                     <Link href={'#'}>
                         <Button>BUY TOKENS</Button>
                     </Link>
