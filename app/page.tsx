@@ -2,22 +2,24 @@
 'use client';
 
 import Link from 'next/link';
-import { H1 } from './components/h1';
-import { Header } from './components/header';
 import { ListElement } from './components/listelement';
-import { Main } from './components/main';
 import { NavBar } from './components/navbar';
 import { UnorderedList } from './components/unorderedlist';
 import styles from './page.module.css';
 import { Card } from './components/card';
-import { H2 } from './components/h2';
 import { ProgressBar } from './components/progressbar';
 import { PTag } from './components/ptag';
 import { Button } from './components/button';
 import { useState } from 'react';
+import { LargeContainer } from './components/large-container';
+import { TextEl } from './components/text';
+
+interface ListObjNameHref {
+    name: string;
+    href: string;
+}
 
 const navListElArr = [
-    { name: 'Logo', href: '#' },
     { name: 'Home', href: '#' },
     { name: 'Features', href: '#' },
     { name: 'Safety', href: '#' },
@@ -25,20 +27,16 @@ const navListElArr = [
     { name: 'Contacts', href: '#' },
     { name: 'Sign In', href: '#' },
 ];
+
 const secondCardFooterArr = [
     { name: 'FB', href: '#' },
     { name: 'LI', href: '#' },
     { name: 'IG', href: '#' },
 ];
 
-interface ListObjNameHref {
-    name: string;
-    href: string;
-}
-
 const listElLoopFxn = (objArr: ListObjNameHref[]) =>
     objArr.map(({ name, href }) => (
-        <ListElement>
+        <ListElement key={name}>
             <Link href={href}>{name}</Link>
         </ListElement>
     ));
@@ -48,14 +46,19 @@ export default function Page() {
 
     return (
         <>
-            <Header>
+            <LargeContainer className={styles.header} type={'header'}>
                 <NavBar>
-                    <UnorderedList>{listElLoopFxn(navListElArr)}</UnorderedList>
+                    <UnorderedList>
+                        <ListElement key={'logo'}>
+                            <Link href={'/'}>logo</Link>
+                        </ListElement>
+                        {listElLoopFxn(navListElArr)}
+                    </UnorderedList>
                 </NavBar>
-            </Header>
-            <Main>
+            </LargeContainer>
+            <LargeContainer className={styles.main} type={'main'}>
                 <Card>
-                    <H1>BuyCoin Blockchain</H1>
+                    <TextEl type={'h1'}>BuyCoin Blockchain</TextEl>
                     <PTag>Secure & Easy Way To Trade</PTag>
                     <Link href={'#'}>
                         <Button>GET STARTED</Button>
@@ -65,7 +68,7 @@ export default function Page() {
                     </Link>
                 </Card>
                 <Card>
-                    <H2>BuyCoin ICO:</H2>
+                    <TextEl type={'h2'}>BuyCoin ICO:</TextEl>
                     <PTag>Discount 33% from final price</PTag>
                     {/* how to do the progress bar & related text for it ?? 🤔 */}
                     <ProgressBar>progress bar for something</ProgressBar>
@@ -77,7 +80,7 @@ export default function Page() {
                         {listElLoopFxn(secondCardFooterArr)}
                     </UnorderedList>
                 </Card>
-            </Main>
+            </LargeContainer>
         </>
     );
 }
