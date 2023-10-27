@@ -1,0 +1,9 @@
+.footer {
+    align-items: center;
+    background-color: rebeccapurple;
+    color: red;
+    display: flex;
+    justify-content: center;
+    min-height: 10vh;
+    text-align: center;
+}

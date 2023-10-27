@@ -1,0 +1,46 @@
+/* try newer nesting syntax ??  */
+
+.header {
+    min-height: 10vh;
+    display: flex;
+    align-items: center;
+    background-color: #a52a2a6b;
+}
+.nav {
+    width: 100vw;
+}
+.nav img {
+    vertical-align: middle;
+}
+.ul {
+    align-items: center;
+    display: flex;
+    list-style-type: none;
+    text-align: center;
+}
+.li {
+    margin: 0.5vh 0.1vw;
+}
+.header .li:first-child,
+.header .li:last-child {
+    flex-grow: 1;
+}
+.header .li:last-child a {
+    background-color: rgba(0, 255, 255, 0.411);
+    border-radius: 20px;
+}
+.header a {
+    padding: 0.5rem 1rem;
+}
+.logoDark {
+    display: none;
+}
+
+@media (prefers-color-scheme: dark) {
+    .logoLight {
+        display: none;
+    }
+    .logoDark {
+        display: contents;
+    }
+}
