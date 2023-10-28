@@ -5,3 +5,8 @@
     margin-block: clamp(1rem, 5vw, 2rem);
     margin-inline: clamp(1rem, 5vw, 2rem);
 }
+
+.apiCard {
+    align-items: center;
+    display: flex;
+}
