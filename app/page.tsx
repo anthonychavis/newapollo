@@ -1,5 +1,5 @@
-// does this mess w/fetching data from the server ??
-// 'use client';
+// does this mess w/fetching data from the server ?? ssg vs ssr ??
+'use client';
 
 import Link from 'next/link';
 import { ListElement } from './_components/listelement';
@@ -10,7 +10,8 @@ import { Button } from './_components/ButtonComp/button';
 import { TextEl } from './_components/TextComp/text';
 import Main from './_components/MainComp/main';
 // import styles from './page.module.css';
-// import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { adviceFxn } from './_components/HelperFxns/helper-fxns';
 
 interface ListObjNameHref {
     name: string;
@@ -32,9 +33,19 @@ const listElLoopFxn = (objArr: ListObjNameHref[]) =>
 
 export default function Page() {
     // const [authorized, setAuthorized] = useState(false);
+    const [advice, setAdvice] = useState(
+        'There should be some advice appearing here...'
+    );
+    const [error, setError] = useState('');
+
+    // fetch outside of component for performance & reduced calls ?? useMemo/useCallback ??
+    useEffect(() => {
+        adviceFxn(`https://api.adviceslip.com/advice`, setAdvice, setError);
+    });
 
     return (
         <Main>
+            {/* set size boundaries for Cards */}
             <Card>
                 <TextEl type={'h1'}>BuyCoin Blockchain</TextEl>
                 <TextEl>Secure & Easy Way To Trade</TextEl>
@@ -59,6 +70,7 @@ export default function Page() {
                     {listElLoopFxn(secondCardFooterArr)}
                 </UnorderedList>
             </Card>
+            <Card>{error ? <h2>Error: {error}</h2> : <h2>{advice}</h2>}</Card>
         </Main>
     );
 }
